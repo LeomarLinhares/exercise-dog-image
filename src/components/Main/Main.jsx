@@ -21,13 +21,22 @@ export default class Main extends Component {
     this.apiFetch();
   }
 
+  handleButton = () => {
+    this.setState({ image: '', loading: true })
+    this.apiFetch();
+  }
+
   render() {
     const { loading } = this.state;
     return (
       <main id='main'>
-        { loading 
-          ? <ReactLoading type='bubbles' color='#fff' /> 
-          : <img src={this.state.image} alt="Cachorrinho" /> }
+        <div className="content">
+          { loading 
+            ? <ReactLoading type='spin' color='#fff' /> 
+            : <img src={this.state.image} alt="Cachorrinho" /> }
+        </div>
+
+        <button onClick={ this.handleButton }>Mais doguinho</button>
       </main>
     )
   }
